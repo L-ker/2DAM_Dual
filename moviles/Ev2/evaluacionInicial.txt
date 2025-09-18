@@ -1,0 +1,122 @@
+package com.lucas.sintaxis_kotlin
+import kotlin.random.Random
+
+fun getIntervalo(numero: Int) = when(numero){
+    in 1..99 ->  "[0, 100)"
+    in 100..199 -> "[100, 200)"
+    in 200..299 -> "[200, 300)"
+    in 300..399 -> "[300, 400)"
+    in 400..500 -> "[400, 500]"
+    else ->  "No va a pasar este caso"
+}
+
+
+fun main () {
+    print("Introduce el radio: ")
+    val numero = Random.nextInt(1,500)
+
+    println("Numero aleatorio: " + numero)
+    println ("Intervalo: " + getIntervalo(numero))
+}   
+
+
+package com.lucas.sintaxis_kotlin
+
+fun main () {
+    print("Introduce el radio: ")
+    val radio = readLine()?.toIntOrNull() ?: 0
+
+    var longitud = 2 * Math.PI * radio
+    println("La longitud del círculo es: " + longitud)
+
+    var area = Math.PI * radio
+    println("El area del círculo es: " + area)
+
+}
+
+
+package com.lucas.sintaxis_kotlin
+
+fun getNombreDia(dia:Int) = when(dia){
+        1 -> ("Lunes")
+        2 -> ("Martes")
+        3 -> ("Miercoles")
+        4 -> ("Jueves")
+        5 -> ("Viernes")
+        6 -> ("Sabado")
+        7 -> ("Domingo")
+    // se que las respuestas se pueden mejorar mucho pero no es un ejercicio importante asi que lo
+    // resuelvo rapido asi
+        else -> ("")
+    }
+
+fun getTipoDia(dia: Int) = when(dia){
+    in 1..5 ->  "Laboral"
+    in 6..7 ->   "Festivo"
+    else ->  "Introduce un número entre le 1 y el 7 por favor"
+}
+
+fun main () {
+    print("Introduce el numero del dia de la semana: ")
+    val dia = readLine()?.toIntOrNull() ?: 0
+
+    print(getNombreDia(dia))
+    print(getTipoDia(dia))
+}
+
+
+package com.lucas.sintaxis_kotlin
+
+fun main () {
+    val numero = readLine()?.toIntOrNull() ?: 0
+
+    if (numero != 0 && numero % 2 == 0) {
+        println("El número es par")
+    } else if (numero % 2 != 0){
+        println("El número es impar")
+    } else {
+        println("Debe de introducir un numero que no sea 0")
+    }
+}
+
+
+package com.lucas.sintaxis_kotlin
+
+
+fun main () {
+    print("Introduce el primer numero: ")
+    val num1 = readLine()?.toIntOrNull() ?: 0
+
+    print("Introduce el segundo numero: ")
+    val num2 = readLine()?.toIntOrNull() ?: 0
+
+    print("Introduce el tercer numero: ")
+    val num3 = readLine()?.toIntOrNull() ?: 0
+
+    val numeros = arrayOf(num1, num2, num3)
+
+    println(numeros.sortedArray().joinToString(", "))
+
+    if (numeros[0] > numeros[1]) {
+        val temp = numeros[0]
+        numeros[0] = numeros[1]
+        numeros[1] = temp
+    }
+
+    if (numeros[1] > numeros[2]) {
+        val temp = numeros[1]
+        numeros[1] = numeros[2]
+        numeros[2] = temp
+    }
+
+    if (numeros[0] > numeros[1]) {
+        val temp = numeros[0]
+        numeros[0] = numeros[1]
+        numeros[1] = temp
+    }
+
+    println("Números ordenados: ${numeros.joinToString(", ")}")
+
+}
+
+
