@@ -1,0 +1,110 @@
+1. hola mundo
+
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+      System.out.println("Hello World");
+  }
+}
+
+2. mínimo de 2 números
+import java.util.Scanner;
+
+public class Main
+{
+	public static void main(String[] args) {
+	    Scanner sc = new Scanner(System.in);
+        int num1 = sc.nextInt();
+        int num2 = sc.nextInt();
+		
+		if (num1 > num2) {
+		    System.out.println("El segundo número es menor");
+		} else {
+    		System.out.println("El primer número es menor");
+		}
+	}
+}
+
+3. Factorial de un numero n (con recursividad)
+import java.util.Scanner;
+
+public class Main
+{
+    public static int factorial (int numero, int suma) {
+        if (numero > 0) {
+            return factorial(numero - 1, suma + numero);
+        } else {
+            return suma;
+        }
+    }
+	public static void main(String[] args) {
+	    Scanner sc = new Scanner(System.in);
+        int num = sc.nextInt();
+
+		System.out.println("El factorial de " + num + " es: " + factorial(num, 0));
+	}
+}
+4. Serie Fibonacci (100 numeros)
+import java.util.ArrayList;
+
+public class Main
+{
+
+    public static ArrayList listaFibonaciFuncionRecursiva(ArrayList<Integer> lista, int ultimaPosicion) {
+        if (ultimaPosicion < 100) {
+            lista.add(lista.get(ultimaPosicion) + lista.get(ultimaPosicion - 1));
+            return listaFibonaciFuncionRecursiva(lista, ultimaPosicion + 1);
+        } else {
+            return lista;
+        }
+    }
+	public static void main(String[] args) {
+        ArrayList<Integer> listaFibonaci = new ArrayList<Integer>();
+        listaFibonaci.add(0);
+        listaFibonaci.add(1);
+        listaFibonaci = listaFibonaciFuncionRecursiva(listaFibonaci, 1);
+        System.out.println(listaFibonaci); 
+	}
+}
+5. Generar 11 números aleatorios y hacer media, mediana y moda
+import java.util.ArrayList;
+
+public class Main
+{
+    public static int media(ArrayList<Integer> lista) {
+        int suma = 0;
+        for (int numero: lista) {
+            suma += numero;
+        }
+        return suma;
+    }
+    public static int mediana(ArrayList<Integer> lista) {
+        lista = lista.sort();
+        System.out.println("Lista ordenada de menor a mayor" + lista);
+        return lista.get(5);
+    }
+    public static int moda(ArrayList<Integer> lista) {
+        HashMap<Integer, Integer> aparicionesNumero = new HashMap<>();
+        
+        for (int numero : lista) {
+            aparicionesNumero.put(numero);
+        }
+    }
+	public static void main(String[] args) {
+	    ArrayList<Integer> listaNumeros = new ArrayList<Integer>();
+	    for (int i = 0; i < 11; i++) {
+            listaNumeros.add((int)(Math.random() * 13)); 
+	    }
+        System.out.println(listaNumeros);
+        
+        System.out.println("Media: " media(listaNumeros));
+        System.out.println("Mediana" + mediana(listaNumeros));
+        System.out.println("Moda: " + moda(listaNumeros));
+    } 
+}
+
+6. Criba de erastóstenes para entre 0 y un numero dado
+7. Debate las cuatro principales características de la POO
+8. Clases vs Interfaces
+9. Haz un programa que demuestre la diferencia entre atributos y métodos adecuados
