@@ -4,5 +4,5 @@ class Hielo:
         self.resistencias = ["Hielo"]
         self.inmunidades = [""]
 
-    def calcularEficacia(tipoAtaque):
+    def calcularEficacia(tipoAtaque, tiposDefensa):
         print ("hola mundo")
