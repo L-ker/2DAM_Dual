@@ -1,0 +1,175 @@
+import java.util.*;
+import java.util.stream.*;
+
+public class Main {
+
+    // Clase abstracta: define estado común y un método abstracto
+    public static abstract class Person {
+        private String name;
+        private int age;
+
+        public Person(String name, int age) {
+            setName(name);
+            setAge(age);
+        }
+
+        public String getName() { return name; }
+        public void setName(String name) {
+            if (name == null || name.isBlank()) throw new IllegalArgumentException("Nombre no válido");
+            this.name = name;
+        }
+
+        public int getAge() { return age; }
+        public void setAge(int age) {
+            if (age < 0) throw new IllegalArgumentException("Edad no válida");
+            this.age = age;
+        }
+
+        // comportamiento obligatorio para subclases
+        public abstract String role();
+
+        @Override
+        public String toString() {
+            return String.format("%s{name='%s', age=%d}", getClass().getSimpleName(), name, age);
+        }
+    }
+
+    // Clase instanciable que hereda de Person
+    public static class Student extends Person {
+        private double grade; // nota entre 0 y 10
+
+        public Student(String name, int age, double grade) {
+            super(name, age);
+            setGrade(grade);
+        }
+
+        public double getGrade() { return grade; }
+        public void setGrade(double grade) {
+            if (grade < 0 || grade > 10) throw new IllegalArgumentException("Nota debe estar entre 0 y 10");
+            this.grade = grade;
+        }
+
+        @Override
+        public String role() {
+            return "Student";
+        }
+
+        @Override
+        public String toString() {
+            return String.format("Student{name='%s', age=%d, grade=%.2f}",
+                    getName(), getAge(), grade);
+        }
+
+        // equals/hashCode para que colecciones como HashSet puedan eliminar duplicados
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (!(o instanceof Student)) return false;
+            Student s = (Student) o;
+            return getAge() == s.getAge() && getName().equals(s.getName());
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(getName(), getAge());
+        }
+    }
+    
+    // Clase instanciable que hereda de Person
+    public static class Professor extends Person {
+        private double grade; // nota entre 0 y 10
+
+        public Professor(String name, int age, ArrayList<String> classes) {
+            super(name, age);
+            this.classes = classes;
+        }
+
+        public double classes() { return classes; }
+
+        @Override
+        public String role() {
+            return "Professor";
+        }
+
+        @Override
+        public String toString() {
+            return String.format("Professor{name='%s', age=%d, classes=%s}",
+                getName(), getAge(), classes.toString());
+        }
+
+        // equals/hashCode para que colecciones como HashSet puedan eliminar duplicados
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (!(o instanceof Professor)) return false;
+            Professor s = (Professor) o;
+            return getAge() == s.getAge() && getName().equals(s.getName());
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(getName(), getAge());
+        }
+    }
+
+    public static void main(String[] args) {
+        Random rnd = new Random(42); // semilla para reproducibilidad
+        List<String> sampleNames = Arrays.asList(
+                "Ana","Luis","María","Carlos","Sofía","Pedro","Lucía","Jorge","Marta","Diego"
+        );
+
+        // 1) Generar 10 objetos Student y meterlos en un ArrayList
+        List<Student> students = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            String name = sampleNames.get(rnd.nextInt(sampleNames.size()));
+            int age = 18 + rnd.nextInt(6); // 18..23
+            double grade = Math.round((4.0 + rnd.nextDouble() * 6.0) * 100.0) / 100.0; // 4.00..10.00 redondeado
+            students.add(new Student(name, age, grade));
+        }
+
+        System.out.println("=== ArrayList: orden de inserción ===");
+        students.forEach(System.out::println);
+
+        // 2) Operaciones típicas con la lista (Streams)
+        double average = students.stream().mapToDouble(Student::getGrade).average().orElse(0.0);
+        System.out.printf("%nMedia de notas = %.2f%n", average);
+
+        // mediana
+        double[] sortedGrades = students.stream().mapToDouble(Student::getGrade).sorted().toArray();
+        double median;
+        int n = sortedGrades.length;
+        if (n % 2 == 1) median = sortedGrades[n/2];
+        else median = (sortedGrades[n/2 - 1] + sortedGrades[n/2]) / 2.0;
+        System.out.printf("Mediana de notas = %.2f%n", median);
+
+        // moda (puede haber más de una)
+        Map<Double, Long> freq = students.stream()
+                .collect(Collectors.groupingBy(Student::getGrade, Collectors.counting()));
+        long maxFreq = freq.values().stream().mapToLong(Long::longValue).max().orElse(0);
+        List<Double> modes = freq.entrySet().stream()
+                .filter(e -> e.getValue() == maxFreq)
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
+        System.out.println("Moda(s) de las notas = " + modes);
+
+        // 3) Usar segunda estructura de datos: HashSet (elimina duplicados según equals/hashCode)
+        Set<Student> studentSet = new HashSet<>(students);
+        System.out.println("\n=== HashSet: duplicados eliminados según (name, age) ===");
+        System.out.println("Tamaño original List = " + students.size() + ", HashSet = " + studentSet.size());
+        studentSet.forEach(System.out::println);
+
+        // 4) Ejemplo adicional: transformar la lista en un Map agrupado por nombre
+        Map<String, List<Student>> byName = students.stream().collect(Collectors.groupingBy(Student::getName));
+        System.out.println("\n=== Agrupados por nombre (Map) ===");
+        byName.forEach((name, list) -> System.out.println(name + " -> " + list.size() + " alumno(s)"));
+
+        // 5) Demostración de polimorfismo: tratar Student como Person
+        System.out.println("\n=== Polimorfismo: usar referencia Person ===");
+        List<Person> people = new ArrayList<>(students);
+        for (Person p : people) {
+            System.out.println(p.role() + " -> " + p);
+        }
+    }
+}
+
+Gracias y un saludo
