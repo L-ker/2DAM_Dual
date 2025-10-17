@@ -1,0 +1,37 @@
+Descargar:
+- Solo empresa, (teléfono random)
+- No hay español, solo ingles y frances
+- Si o si es postgre
+- localhost obviamente, el puerto se puede cambiar pero se debe de recordar (este puerto es de la base de datos)
+- usuario y contraseña los piden luego
+
+# PROGRESO
+
+## Fase I: Instalación del Sistema Base.
+x Descarga la última versión de Odoo para Windows e iníciala: Descargar sin más.
+
+x Durante el proceso, anota la configuración de PostgreSQL (puerto, usuario, contraseña) que se utiliza: Sacar una foto con recortes.
+
+x Finaliza la instalación. El navegador web por defecto se abrirá.
+
+## Fase II
+x Crea la base de datos inicial con el nombre: odoo_dual_2025 (cuando recien acabas instalacion te lo pide)
+
+-Instala un par de aplicaciones (módulos) disponibles en el menú y explora su funcionamiento con ejemplos prácticos (por ejemplo, crear un contacto en CRM o un producto en Inventario).
+
+-Explora la Configuración general de Odoo (idioma, empresa, etc.).
+
+-Practica la Gestión de la base de datos: accede al gestor y crea al menos una base de datos adicional (de prueba).
+
+## Fase III
+
+Para la grabación del video, la demostración debe cubrir los siguientes puntos.
+ Asegúrate de mostrar las capturas de pantalla de la instalación y las funcionalidades en Odoo:
+
+A. Proceso de Instalación: Pasos, configuración de PostgreSQL, problemas comunes y sus soluciones.
+B. Acceso y Uso Básico de Odoo: Acceso a la interfaz y ejemplos prácticos tras la instalación de los módulos seleccionados.
+C. Gestión de la Base de Datos: Cómo acceder al gestor, cómo crear bases de datos adicionales y ejemplos.
+D. Configuración General: Resumen de las opciones de configuración general exploradas.
+E. Aplicaciones Seleccionadas: Proceso de instalación de las aplicaciones y descripción de su funcionamiento con ejemplos específicos.
+F. Acceso en Red: Procedimiento y ejemplos del Uso de Odoo desde otros equipos en red (requiere configuración de firewall y/o red).
+G. Personalización: Opciones y ejemplos de Extensión y personalización de las funcionalidades de Odoo (p. ej., activación de modo desarrollador, uso de Odoo Studio si está disponible, instalación de un módulo de la comunidad).
