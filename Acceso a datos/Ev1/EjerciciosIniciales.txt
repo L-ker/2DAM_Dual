@@ -20,9 +20,11 @@ public class Main
 		
 		if (num1 > num2) {
 		    System.out.println("El segundo número es menor");
-		} else {
+		} else if (num1 < num2) {
     		System.out.println("El primer número es menor");
-		}
+		} else {
+            System.out.println("Los números son iguales");
+        }
 	}
 }
 
@@ -31,18 +33,18 @@ import java.util.Scanner;
 
 public class Main
 {
-    public static int factorial (int numero, int suma) {
-        if (numero > 0) {
-            return factorial(numero - 1, suma + numero);
+    public static int factorial(int numero) {
+        if (numero <= 1) {
+            return 1;
         } else {
-            return suma;
+            return numero * factorial(numero - 1);
         }
     }
 	public static void main(String[] args) {
 	    Scanner sc = new Scanner(System.in);
         int num = sc.nextInt();
 
-		System.out.println("El factorial de " + num + " es: " + factorial(num, 0));
+        System.out.println("El factorial de " + num + " es: " + factorial(num));
 	}
 }
 4. Serie Fibonacci (100 numeros)
@@ -149,4 +151,47 @@ public class Main
 8. Clases vs Interfaces
 Las interfaces no poseen código como tal, son solo un esqueleto que indica que funcionas debe tener de forma obligatoria una clase 
 que extienda de dicha interfaz mientras que la clase posee el codigo que hace que funcionen los metodos
+
 9. Haz un programa que demuestre la diferencia entre atributos y métodos adecuados
+public class Persona {
+    // Atributos (datos)
+    private String nombre;
+    private int edad;
+
+    // Constructor
+    public Persona(String nombre, int edad) {
+        this.nombre = nombre;
+        this.edad = edad;
+    }
+
+    // Método adecuado: muestra información de la persona
+    public void mostrarInfo() {
+        System.out.println("Nombre: " + nombre + ", Edad: " + edad);
+    }
+
+    // Método adecuado: aumenta la edad en 1
+    public void cumplirAnos() {
+        edad++;
+    }
+
+    // Getters y setters para encapsulamiento
+    public String getNombre() {
+        return nombre;
+    }
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    public int getEdad() {
+        return edad;
+    }
+    public void setEdad(int edad) {
+        if (edad >= 0) this.edad = edad;
+    }
+    
+    public static void main(String[] args) {
+        Persona p = new Persona("Ana", 30);
+        p.mostrarInfo();
+        p.cumplirAnos();
+        p.mostrarInfo();
+    }
+}
