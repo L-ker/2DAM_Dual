@@ -1,0 +1,14 @@
+Releer:
+- Pandas
+- Teoria completa con codigo (hasta el punto 4 de modelos supervisados)
+
+Hacer apuntes de todo separado (sobre todo de las formulas explicandolas un poco y si eso algun mini ejemplo)
+
+Datos que podrian servirnos:
+1 Momento del dia
+2 Jugadas player 1
+3 Jugadas player 2
+4 Numero de la partida
+minimo 100 tiradas al piedra papel o tijera, datos buenos a partir de 500, no pasarse
+
+claude code agente integrado
