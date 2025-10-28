@@ -1,11 +1,12 @@
 package HilosTest;
 
-public class Hilo1 extends Thread {
+
+public class Hilo2 implements Runnable{
 
 	private Contador c;
 	private int TOTAL = 1000;
 	
-	public Hilo1(Contador c) {
+	public Hilo2(Contador c) {
 		this.c = c;
 	}
 	
