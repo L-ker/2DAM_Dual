@@ -4,5 +4,5 @@
 /**
  * 
  */
-module AAD_JAVA {
+module test {
 }
