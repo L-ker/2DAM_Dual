@@ -22,19 +22,11 @@ public class Coche extends Thread {
     public void run() {
         puente.entrar(this);
         try {
-			sleep((int)(Math.random()*500 + 500));
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+            Thread.sleep((int)(Math.random() * 2000) + 1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         puente.salir(this);
-    }
-    
-    public void entrarPuente() {
-    	
-    }
-    
-    public void salirPuente() {
-    	
     }
 
     public String getCategoria() { return categoria; }
