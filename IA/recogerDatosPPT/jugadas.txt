@@ -1,0 +1,20 @@
+Ronda: 1
+Jugador1: papel
+Jugador2: piedra
+Tiempo reaccion jugador1: 0.70 s
+Tiempo reaccion jugador2: 0.38 s
+Racha victorias jugador1: 1
+Racha victorias jugador2: 0
+Jugador1 jugadas consecutivas: 1
+Jugador2 jugadas consecutivas: 1
+
+Ronda: 2
+Jugador1: piedra
+Jugador2: tijera
+Tiempo reaccion jugador1: 0.78 s
+Tiempo reaccion jugador2: 0.94 s
+Racha victorias jugador1: 2
+Racha victorias jugador2: 0
+Jugador1 jugadas consecutivas: 1
+Jugador2 jugadas consecutivas: 1
+
