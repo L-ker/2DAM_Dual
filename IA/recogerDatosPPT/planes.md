@@ -32,3 +32,15 @@ P (A|B) = -----------------
 - Binominal: segun numero de exitos en N ensayos
 
 (Seguir teoria fundamentos IA md)
+
+------------------------------------------------------------
+
+Cosas de probabilidad para las features y algoritmos comunes: https://github.com/Rubenbros/IA-CC-2025/blob/master/clases/05-fundamentos-ia/teoria_fundamentos_ia_ml.md
+
+La regresion seria predecir solo en cuanto a las jugadas anteriores esto seria mas programacion tradicional la gracia es hacer features para hacer machine learning
+
+clasificacion por jugadas seria interesante
+
+Podria ser interesante el 3.3 de aprendizaje por refuerzo
+
+por el 3.4
