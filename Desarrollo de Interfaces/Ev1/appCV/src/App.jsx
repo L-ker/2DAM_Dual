@@ -123,17 +123,21 @@ function App() {
               </div>
             </div>
           </div>
-
-          {/* Sobre Mí */}
+                    {/* Idiomas */}
           <div className="seccion">
             <h2 className="titulo-seccion">· Idiomas</h2>
-            <p>Desarrollador full stack con 1 año de experiencia capacitado para el desarrollo de aplicaciones Web y Multiplataforma, conocimientos en bases de datos y servidores</p>
-          </div>
 
-          {/* Sobre Mí */}
-          <div className="seccion">
-            <h2 className="titulo-seccion">· Certificaciones</h2>
-            <p>Desarrollador full stack con 1 año de experiencia capacitado para el desarrollo de aplicaciones Web y Multiplataforma, conocimientos en bases de datos y servidores</p>
+            <div className="idiomas">
+              <div className="col-idiomas">
+                <span>Español</span>
+                <span className='elementoIdioma '>Inglés</span>
+              </div>
+
+              <div className="col-niveles">
+                <span className='elementoNivel '>Nativo</span>
+                <span className='elementoNivel '>B2-C1</span>
+              </div>
+            </div>
           </div>
         </div>
         <div className="columna-derecha-flex">
@@ -171,6 +175,48 @@ function App() {
               <p className="periodo">2025 - 2026</p>
             </div>
           </div>
+
+          {/* Proyectos destacados */}
+          <div className="seccion">
+            <h2 className="titulo-seccion">· Proyectos destacados</h2>
+
+            <div className="item-proyecto">
+              <h3>Proyecto de fin de grado (DAW)</h3>
+              <p className="lenguajes">PHP · Laravel · MySQL</p>
+              <a href="https://github.com/L-ker/ProyectoFinDeGrado" target="_blank">
+                <img 
+                  src="https://cdn-icons-png.flaticon.com/512/25/25231.png" 
+                  className="github-icon" 
+                  alt="GitHub"
+                />
+              </a>
+            </div>
+
+            <div className="item-proyecto">
+              <h3>Página Explicación Hugo</h3>
+              <p className="lenguajes">HTML · CSS · JavaScript</p>
+              <a href="https://github.com/L-ker/trabajoHugo" target="_blank">
+                <img 
+                  src="https://cdn-icons-png.flaticon.com/512/25/25231.png" 
+                  className="github-icon" 
+                  alt="GitHub"
+                />
+              </a>
+            </div>
+
+            <div className="item-proyecto">
+              <h3>Proyecto CRUD Laravel</h3>
+              <p className="lenguajes">Laravel · Blade · MySQL</p>
+              <a href="https://github.com/L-ker/ProyectoCrudLaravel" target="_blank">
+                <img 
+                  src="https://cdn-icons-png.flaticon.com/512/25/25231.png" 
+                  className="github-icon" 
+                  alt="GitHub"
+                />
+              </a>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
