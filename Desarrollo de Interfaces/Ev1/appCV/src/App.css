@@ -7,7 +7,7 @@ body {
 }
 
 .contenedor-principal {
-  width: calc(100vp - 40px);/*La resta es por el padding porque vw no calcula el padding*/
+  width: calc(100vw - 40px);/*La resta es por el padding porque vw no calcula el padding*/
   margin: 0 auto;
   background-color: white;
   border-radius: 20px;
