@@ -4,5 +4,5 @@
 /**
  * 
  */
-module test {
+module EjemploEstructuraDB {
 }
