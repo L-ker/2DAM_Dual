@@ -19,66 +19,57 @@ import java.util.Scanner;
 
 public class Servidor {
 
-    public static void main(String [] args){
+    public static void main(String[] args) {
+        final int PUERTO = 500;
 
-        //Puerto que el servidor usa para escuchar
-        final int PUERTO=500;
+        try (ServerSocket server = new ServerSocket(PUERTO)) {
+            System.out.println("Servidor escuchando en el puerto " + PUERTO);
 
-        //Creamos el serverSocket
-        //Al ponerlo dentro del try se cierra automáticamente
-        try(ServerSocket server=new ServerSocket(PUERTO)){
-            System.out.println("Servidor escuchando en el puerto "+ PUERTO);
-
-            //Estamos constantemente aceptando conexiones
-            while(true){
-                /*
-                 * El programa se queda parado hasta que recibe una conexión.
-                 * Una vez establecida crea un nuevo soxket para la comunicación
-                 * cliente-servidor
-                 */
-                Socket socket=server.accept();
-                //imprimo la ip desde que se ha conectado
-                System.out.println("Cliente conectado"+socket.getInetAddress());
-
-                //manejo el cliente con un hilo alq ue le paso el Socket
-                new Thread (()->leerCliente(socket)).start();
-                new Thread (()->escribirCliente(socket)).start();
-
-            }
-
-            }catch(IOException e){
-                e.printStackTrace();
-            }
-
-            
-        }
-
-
-
-    private static void leerCliente(Socket socket) {
-        System.err.println("Hilo de lectura");
-        try (BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
-            String mensaje;
-            while ((mensaje = in.readLine()) != null) {
-                System.out.println("Cliente dice: " + mensaje + " desde " + socket.getInetAddress());
-            }
-        } catch (IOException e) {
-            System.out.println("Cliente desconectado: " + socket.getInetAddress());
-        }
-    }
-
-    private static void escribirCliente(Socket socket) {
-        System.err.println("Hilo de escritura");
-        try (PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-             Scanner teclado = new Scanner(System.in)) {
             while (true) {
-                System.out.print("Servidor escribe: ");
-                String mensaje = teclado.nextLine();
-                out.println(mensaje);
+                Socket socket = server.accept();
+                System.out.println("Cliente conectado: " + socket.getInetAddress());
+
+                new Thread(() -> manejarCliente(socket)).start();
             }
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    
+
+    private static void manejarCliente(Socket socket) {
+
+        try {
+            // Streams del socket
+            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+
+            // --------- HILO LECTOR (recibe mensajes del cliente) ----------
+            Thread lector = new Thread(() -> {
+                try {
+                    String mensaje;
+                    while ((mensaje = in.readLine()) != null) {
+                        System.out.println("Cliente dice: " + mensaje);
+                    }
+                } catch (IOException e) {
+                    System.out.println("Cliente desconectado.");
+                }
+            });
+
+            // --------- HILO ESCRITOR (envía mensajes desde consola) ----------
+            Thread escritor = new Thread(() -> {
+                Scanner sc = new Scanner(System.in);
+                while (true) {
+                    String msg = sc.nextLine();
+                    out.println(msg);
+                }
+            });
+
+            lector.start();
+            escritor.start();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
