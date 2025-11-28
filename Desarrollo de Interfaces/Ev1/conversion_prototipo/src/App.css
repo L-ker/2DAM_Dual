@@ -71,11 +71,6 @@ hr {
   padding: 10px;
 }
 
-.controlsDiv {
-  display: flex;
-  justify-content: space-evenly;
-}
-
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -89,20 +84,62 @@ hr {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.progressBar {
+  /*Se que no estaba en el diseño original pero con los colores que hay se ve tan mal la barra que lo añado*/
+  border: 0.5px solid black;
+  -webkit-appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  margin: 10px;
+  outline: none;
+
+  background: linear-gradient(
+    to right,
+    #6b6b6b var(--progress, 0%),   /* Parte gris de progreso */
+    #dcdcdc var(--progress, 0%)    /* Parte aún no reproducida */
+  );
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/*Hace el thumb invisible*/
+.progressBar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  border: none;
+  width: 0;
+  height: 0;
 }
+
+button {
+  border: 0.5px solid black;
+  background: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.controlsDiv {
+  display: flex;
+  justify-content: center; 
+}
+
+.controlsDiv button {
+  margin: 10px;
+} 
+
+.selectsDiv {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.checkLabel {
+  display: flex;
+  align-items: center;
+  gap: 1px; /* espacio entre checkbox y texto */
+}
+
 
 .card {
   padding: 2em;
