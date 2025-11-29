@@ -1,17 +1,20 @@
-import drawing from '../assets/drawing.jpg';
+import { useState } from "react";
 
-export default function Song() {
+export default function EmojiCarousel() {
+  const emojis = ["😷", "😄", "🤠", "😈", "🤖"];
+  const [selected, setSelected] = useState(2);
+
   return (
-    <div className="componentDiv songDiv">
-        <div className="photoDiv">
-          <img src={drawing} alt="Alejandro Sanz drawing"/>
-        </div>
-        <div className="textDiv">
-          <div className="textPlaceholder long"></div>
-          <div className="textPlaceholder medium"></div>
-          <div className="textPlaceholder long"></div>
-          <div className="textPlaceholder short"></div>
-        </div>
+    <div className="componentDiv emojisDiv">
+      {emojis.map((emoji, i) => (
+        <span
+          key={i}
+          className={i === selected ? "emoji selected" : "emoji"}
+          onClick={() => setSelected(i)}
+        >
+          {emoji}
+        </span>
+      ))}
     </div>
   );
 }

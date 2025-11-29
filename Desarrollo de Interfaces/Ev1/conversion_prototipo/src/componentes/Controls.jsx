@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function Song() {
+export default function Controls() {
   /**
    * Use state es una función de react que devuelve:
    * Value - valor inicial (el que se pasa como parametro)
@@ -47,11 +47,15 @@ export default function Song() {
           "--progress": `${value1}%`
         }}
         />
-        <div>
+        <div className="divBotonesControls">
           <button>⏪</button>
           <button>▶️</button>
           <button>⏩</button>
         </div>
+      </div>
+
+      <div className="componentDiv">
+        <input type="text" placeholder="Alejandro Sanz" className="inputTexto"/>
       </div>
     </div>
   );

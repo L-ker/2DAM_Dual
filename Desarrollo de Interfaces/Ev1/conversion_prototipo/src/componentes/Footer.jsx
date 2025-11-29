@@ -1,17 +1,13 @@
-import drawing from '../assets/drawing.jpg';
 
-export default function Song() {
+export default function Footer() {
   return (
-    <div className="componentDiv songDiv">
-        <div className="photoDiv">
-          <img src={drawing} alt="Alejandro Sanz drawing"/>
-        </div>
-        <div className="textDiv">
-          <div className="textPlaceholder long"></div>
-          <div className="textPlaceholder medium"></div>
-          <div className="textPlaceholder long"></div>
-          <div className="textPlaceholder short"></div>
-        </div>
+    <div>
+      <hr id="hrFooter"/>
+      <div className="componentDiv footerDiv">
+        <p>🏠</p>
+        <p>⬜</p>
+        <p>☰</p>
+      </div>
     </div>
   );
 }

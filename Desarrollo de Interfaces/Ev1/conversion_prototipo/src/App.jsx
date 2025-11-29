@@ -4,7 +4,9 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import { 
   Header,
+  HeaderMarc,
   Song,
+  SongMarc,
   Controls,
   Selects,
   EmojiCarousel,
@@ -12,18 +14,14 @@ import {
 } from "./componentes";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
       <div className='mainDiv'>
         {/* Header */}
-        <Header/>
-
-        <hr/>
+        <HeaderMarc/>
 
         {/* Song */}
-        <Song/>
+        <SongMarc/>
 
         {/* Controls */}
         <Controls/>

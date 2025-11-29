@@ -3,6 +3,7 @@ export default function Header() {
     <div className="componentDiv headerDiv">
         <h1>Alejandro Sanz</h1>
         <h2>- Más -</h2>
+        <hr/>
     </div>
   );
 }
