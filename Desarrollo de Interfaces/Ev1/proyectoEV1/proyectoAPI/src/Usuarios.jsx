@@ -2,18 +2,22 @@ import React from 'react';
 import useUsuarios from "./componentes/useUsuarios";
 import BotonCargar from "./componentes/BotonCargar";
 import ListaUsuarios from "./componentes/ListaUsuarios";
+import './Usuarios.css'
 
 function Usuarios() {
 
   const { usuarios, cargarUsuarios } = useUsuarios();
 
   return (
-    <div>
-      <h2>Listado de usuarios</h2>
+    <div className='main'>
+      <div className='header'>
+        <h1>Listado de usuarios</h1>
+      </div>
+      <div className='contenido'>
+        <BotonCargar onClick={cargarUsuarios} />
 
-      <BotonCargar onClick={cargarUsuarios} />
-
-      <ListaUsuarios usuarios={usuarios} />
+        <ListaUsuarios usuarios={usuarios} />
+      </div>  
     </div>
   );
 }

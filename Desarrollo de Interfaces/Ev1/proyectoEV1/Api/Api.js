@@ -3,8 +3,16 @@ import http from 'http';
 
 // Defines un pequeño array con usuarios de ejemplo
 const usuarios = [
-  { id: 1, nombre: 'Juan',  apellidos: 'Pérez', urlImagen: 'https://randomuser.me/api/portraits/men/1.jpg',   fechaNacimiento: '1990-05-15' },
-  { id: 2, nombre: 'María', apellidos: 'Gómez', urlImagen: 'https://randomuser.me/api/portraits/women/2.jpg', fechaNacimiento: '1985-10-30' }
+  { id: 1, nombre: 'Ivan',  apellidos: 'Ezquerro', urlImagen: 'https://randomuser.me/api/portraits/men/1.jpg',   fechaNacimiento: '1990-05-15' },
+  { id: 2, nombre: 'Adrán', apellidos: 'Laga', urlImagen: 'https://randomuser.me/api/portraits/men/2.jpg', fechaNacimiento: '1985-10-30' },
+  { id: 3, nombre: 'Victor',  apellidos: 'Simón', urlImagen: 'https://randomuser.me/api/portraits/men/3.jpg',   fechaNacimiento: '1990-05-15' },
+  { id: 4, nombre: 'Rafael', apellidos: 'Valerio', urlImagen: 'https://randomuser.me/api/portraits/men/4.jpg', fechaNacimiento: '1985-10-30' },
+  { id: 5, nombre: 'Nerea',  apellidos: 'Pellés', urlImagen: 'https://randomuser.me/api/portraits/women/5.jpg',   fechaNacimiento: '1990-05-15' },
+  { id: 6, nombre: 'Ruben', apellidos: 'Pasamon', urlImagen: 'https://randomuser.me/api/portraits/men/6.jpg', fechaNacimiento: '1985-10-30' },
+  { id: 7, nombre: 'Victor',  apellidos: 'Lacruz', urlImagen: 'https://randomuser.me/api/portraits/men/7.jpg',   fechaNacimiento: '1990-05-15' },
+  { id: 8, nombre: 'Irene', apellidos: 'Fernández', urlImagen: 'https://randomuser.me/api/portraits/women/8.jpg', fechaNacimiento: '1985-10-30' },
+  { id: 9, nombre: 'Lilja',  apellidos: 'Svara', urlImagen: 'https://randomuser.me/api/portraits/women/9.jpg',   fechaNacimiento: '1990-05-15' },
+  { id: 10, nombre: 'Lucas', apellidos: 'Perez', urlImagen: 'https://randomuser.me/api/portraits/men/10.jpg', fechaNacimiento: '1985-10-30' }
 ];
 
 // Crea el servidor HTTP con soporte básico para CORS
