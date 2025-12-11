@@ -1,0 +1,172 @@
+# Sincronizar un método (synchronized en el método)
+public synchronized void incrementar() {
+    contador++;
+}
+
+Qué hace: bloquea el objeto que contiene el método (this).
+Efecto: solo un hilo a la vez puede ejecutar cualquier método synchronized de ese objeto.
+Uso típico: cuando quieres proteger todos los accesos a los datos internos del objeto.
+
+
+# Sincronizar un bloque sobre un objeto (synchronized(objeto))
+public void incrementar() {
+    synchronized(lock) {
+        contador++;
+    }
+}
+
+Qué hace: bloquea solo el objeto lock mientras se ejecuta el bloque.
+Efecto: otros hilos pueden ejecutar código fuera del bloque o usar otros locks.
+Uso típico: cuando quieres proteger solo una sección crítica o un recurso compartido específico, sin bloquear todo el objeto.
+
+----------
+
+1️⃣ Hilos (Thread)
+Método	Qué hace	Ejemplo
+start()	Inicia la ejecución de un hilo (llama internamente a run())	Thread t = new Thread(() -> System.out.println("Hola")); t.start();
+run()	Contiene el código que ejecuta el hilo	public void run() { System.out.println("Soy un hilo"); }
+sleep(ms)	Pausa el hilo actual durante ms milisegundos	Thread.sleep(1000); // 1 segundo
+join()	Espera a que otro hilo termine	t1.join(); // espera a t1
+setName(String)	Cambia el nombre del hilo	t.setName("Hilo 1");
+getName()	Obtiene el nombre del hilo	String nombre = t.getName();
+setPriority(int)	Cambia la prioridad del hilo (MIN_PRIORITY, NORM_PRIORITY, MAX_PRIORITY)	t.setPriority(Thread.MAX_PRIORITY);
+getState()	Devuelve el estado del hilo (NEW, RUNNABLE, BLOCKED, WAITING, TIMED_WAITING, TERMINATED)	System.out.println(t.getState());
+isAlive()	Devuelve true si el hilo sigue en ejecución	if (t.isAlive()) System.out.println("Hilo vivo");
+2️⃣ Sincronización (synchronized)
+Forma	Qué hace	Ejemplo
+Método sincronizado	Bloquea el objeto actual (this) mientras se ejecuta	public synchronized void incrementar() { contador++; }
+Bloque sincronizado sobre objeto	Bloquea solo un recurso específico	synchronized(lock) { contador++; }
+3️⃣ Semáforos (Semaphore)
+Método	Qué hace	Ejemplo
+acquire()	Toma un permiso; espera si no hay disponibles	sem.acquire(); // espera si está ocupado
+release()	Libera un permiso	sem.release(); // deja libre el recurso
+Constructor Semaphore(int n)	Número de permisos simultáneos	Semaphore sem = new Semaphore(3); // 3 accesos a la vez
+4️⃣ ExecutorService (Pools de hilos)
+Método	Qué hace	Ejemplo
+Executors.newFixedThreadPool(n)	Crea un pool de n hilos	ExecutorService pool = Executors.newFixedThreadPool(3);
+execute(Runnable)	Envía una tarea al pool	pool.execute(() -> System.out.println("Hola"));
+shutdown()	No acepta más tareas, deja que terminen las actuales	pool.shutdown();
+awaitTermination(time, unit)	Espera a que terminen todas las tareas o tiempo límite	pool.awaitTermination(1, TimeUnit.MINUTES);
+5️⃣ Contadores y variables compartidas
+Concepto	Qué hacer	Ejemplo
+Operaciones atómicas	Evitar condiciones de carrera usando synchronized	public synchronized void incrementar() { contador++; }
+AtomicInteger	Clase que hace operaciones atómicas sin synchronized	AtomicInteger x = new AtomicInteger(0); x.incrementAndGet();
+6️⃣ Otros útiles
+Método / Clase	Qué hace	Ejemplo
+Math.random()	Número aleatorio entre 0 y 1	double r = Math.random();
+Random.nextInt(n)	Número aleatorio entero entre 0 y n-1	Random rand = new Random(); int i = rand.nextInt(5);
+Thread.currentThread()	Obtiene el hilo actual	Thread t = Thread.currentThread(); System.out.println(t.getName());
+
+----
+
+1️⃣ Métodos de hilos (Thread)
+Método	Qué hace	Ejemplo
+start()	Inicia la ejecución del hilo	t.start();
+run()	Contiene el código del hilo	public void run() { ... }
+sleep(ms)	Pausa el hilo actual	Thread.sleep(1000);
+join()	Espera que termine otro hilo	t.join();
+setName(String)	Cambia el nombre del hilo	t.setName("Hilo1");
+getName()	Devuelve el nombre del hilo	System.out.println(t.getName());
+setPriority(int)	Cambia la prioridad (MIN_PRIORITY, NORM_PRIORITY, MAX_PRIORITY)	t.setPriority(Thread.MAX_PRIORITY);
+getState()	Estado del hilo (NEW, RUNNABLE, BLOCKED, etc.)	System.out.println(t.getState());
+isAlive()	Devuelve true si sigue ejecutándose	if(t.isAlive()) ...
+currentThread()	Devuelve el hilo que se está ejecutando	Thread t = Thread.currentThread();
+2️⃣ Sincronización
+Método / construcción	Qué hace	Ejemplo
+synchronized método	Bloquea el objeto actual (this)	public synchronized void incrementar() { contador++; }
+synchronized bloque	Bloquea un objeto específico	synchronized(lock) { contador++; }
+Semaphore.acquire()	Toma un permiso del semáforo, espera si no hay	sem.acquire();
+Semaphore.release()	Libera un permiso	sem.release();
+Semaphore(int n)	Define número de permisos simultáneos	Semaphore sem = new Semaphore(3);
+3️⃣ ExecutorService / Pool de hilos
+Método	Qué hace	Ejemplo
+Executors.newFixedThreadPool(n)	Crea pool de n hilos	ExecutorService pool = Executors.newFixedThreadPool(3);
+execute(Runnable)	Envía tarea al pool	pool.execute(() -> System.out.println("Tarea"));
+shutdown()	No acepta nuevas tareas	pool.shutdown();
+awaitTermination(time, unit)	Espera que terminen todas las tareas	pool.awaitTermination(1, TimeUnit.MINUTES);
+4️⃣ Random / números aleatorios
+import java.util.Random;
+
+Random random = new Random();
+
+// Número aleatorio entre 0 y n-1
+int x = random.nextInt(10); // 0..9
+
+// Número aleatorio entre n y m (inclusive)
+int n = 5, m = 15;
+int y = random.nextInt(m - n + 1) + n; // 5..15
+System.out.println("Número aleatorio: " + y);
+----------------
+
+creacion hilos
+
+class MiHilo extends Thread {
+    @Override
+    public void run() {
+        System.out.println("Hilo ejecutándose");
+    }
+}
+
+new MiHilo().start();
+
+
+class MiRunnable implements Runnable {
+    @Override
+    public void run() {
+        System.out.println("Hilo ejecutándose");
+    }
+}
+
+new Thread(new MiRunnable()).start();
+
+
+Thread hilo = new Thread(() -> {
+    System.out.println("Hilo ejecutándose con lambda");
+});
+
+hilo.start();
+
+start asincrono
+run sincrono
+
+MiRunnable r = new MiRunnable();
+Thread t = new Thread(r);
+t.start(); // ✔ Esto sí crea un hilo nuevo
+
+
+public class EjemploHilo {
+    public static void main(String[] args) {
+
+        Thread hilo = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                // Aquí va el método o la lógica que ejecutará el hilo
+                miMetodo();
+            }
+
+            // Puedes definir el método dentro de la clase anónima
+            private void miMetodo() {
+                System.out.println("El hilo está ejecutando miMetodo()");
+            }
+        });
+
+        // Activar el hilo
+        hilo.start();
+    }
+}
+
+
+public class EjemploHilo {
+    public static void main(String[] args) {
+
+        Thread hilo = new Thread(() -> {
+            miMetodo();
+        });
+
+        hilo.start();
+    }
+
+    private static void miMetodo() {
+        System.out.println("Ejecutando miMetodo() en un hilo");
+    }
+}

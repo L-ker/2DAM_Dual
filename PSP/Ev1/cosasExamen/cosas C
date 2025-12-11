@@ -1,0 +1,188 @@
+✅ 1. CREACIÓN Y MANEJO DE PROCESOS (lo más importante para tu examen)
+fork()
+
+Crea un nuevo proceso (hijo).
+Retorna:
+
+0 → código ejecutándose en el hijo
+
+>0 → PID del hijo, ejecutándose en el padre
+
+-1 → error
+
+Ejemplo básico:
+pid_t pid = fork();
+if (pid == 0) {
+    printf("Soy el hijo\n");
+} else if (pid > 0) {
+    printf("Soy el padre, mi hijo tiene PID %d\n", pid);
+}
+
+Diferenciar padre e hijo
+if (pid == 0) { /* hijo */ }
+else { /* padre */ }
+
+Proceso nieto
+pid_t pid = fork();
+if (pid == 0) { 
+    // hijo
+    pid_t pid2 = fork();
+    if (pid2 == 0) {
+        printf("Soy el NIETO\n");
+    } else {
+        printf("Soy el HIJO\n");
+    }
+} else {
+    printf("Soy el PADRE\n");
+}
+
+Proceso zombie
+
+Ocurre si el hijo termina y el padre NO hace wait().
+
+pid_t pid = fork();
+if (pid == 0) {
+    printf("Hijo terminando...\n");
+    exit(0);
+}
+
+sleep(50);   // padre no hace wait → hijo queda zombie
+
+Solución: wait() o waitpid()
+wait()
+
+Bloquea hasta que finalice un hijo:
+
+int status;
+wait(&status);
+
+waitpid(pid, &status, 0)
+
+Puedes esperar por un hijo concreto:
+
+waitpid(pid, &status, 0);
+
+exec – ejecutar otro programa
+
+Reemplaza el proceso actual por otro.
+
+Principales variantes:
+
+execl(path, arg1, arg2, ..., NULL)
+
+execv(path, argv[])
+
+execlp(file, args...)
+
+execvp(file, argv[])
+
+Ejemplo:
+execlp("ls", "ls", "-l", NULL);
+
+✅ 2. COMUNICACIÓN ENTRE PROCESOS: PIPES
+Crear pipe
+int fd[2];
+pipe(fd);  // fd[0] = lectura, fd[1] = escritura
+
+Pipe + fork
+int fd[2];
+pipe(fd);
+pid_t pid = fork();
+
+if (pid == 0) {        // hijo
+    close(fd[0]);
+    write(fd[1], "Hola", 4);
+} else {               // padre
+    close(fd[1]);
+    char buffer[10];
+    read(fd[0], buffer, 10);
+    printf("Padre lee: %s\n", buffer);
+}
+
+✅ 3. SEÑALES (signals)
+Enviar señales
+kill(pid, SIGKILL);
+kill(pid, SIGSTOP);
+kill(pid, SIGCONT);
+kill(pid, SIGINT);
+
+Capturar señales
+#include <signal.h>
+
+void manejador(int signo) {
+    printf("Señal recibida: %d\n", signo);
+}
+
+signal(SIGINT, manejador);
+
+✅ 4. Estructuras de control (for, while, if…)
+if / else
+if (x > 0) { ... }
+else { ... }
+
+for
+for (int i = 0; i < 10; i++) printf("%d", i);
+
+while
+while (x < 10) x++;
+
+do-while
+do { x++; } while (x < 10);
+
+
+C no tiene foreach, pero se simula con un for.
+
+✅ 5. Funciones útiles de C (muy usadas)
+Entrada / salida (stdio.h)
+Función	Descripción
+printf	Mostrar texto
+scanf	Leer valores
+fopen	Abrir archivo
+fclose	Cerrar archivo
+fprintf	Escribir a archivo
+fscanf	Leer de archivo
+fgets	Leer línea
+fputs	Escribir línea
+putchar	Imprimir char
+getchar	Leer char
+Manejo de cadenas (string.h)
+Función	Uso
+strlen()	longitud
+strcpy()	copiar
+strncpy()	copiar tamaño limitado
+strcat()	concatenar
+strcmp()	comparar
+strtok()	dividir string
+Memoria dinámica (stdlib.h)
+Función	Uso
+malloc()	reservar memoria
+calloc()	reservar e inicializar
+realloc()	redimensionar
+free()	liberar
+Aleatorios (stdlib.h, time.h)
+srand(time(NULL));
+int r = rand() % 100;   // aleatorio 0–99
+
+Matemáticas (math.h)
+Función	Descripción
+sqrt(x)	raíz cuadrada
+pow(a,b)	potencia
+abs(x) / fabs(x)	valor absoluto
+sin(), cos(), tan()	trigonometría
+log(), log10()	logaritmos
+ceil(), floor()	redondeo
+✅ 6. Structs / tipos de datos útiles
+struct
+struct Persona {
+    char nombre[20];
+    int edad;
+};
+
+Punteros
+int x = 10;
+int *p = &x;
+printf("%d", *p);
+
+✅ 7. Compilación
+gcc programa.c -o programa
+./programa
