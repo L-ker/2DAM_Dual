@@ -1,0 +1,59 @@
+/* General container */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    font-family: sans-serif;
+}
+
+/* Fila del árbol */
+.row {
+    display: flex;
+    justify-content: center;
+}
+
+/* Pixel base */
+.pixel {
+    width: 50px;
+    height: 50px;
+    margin: 2px;
+    box-sizing: border-box;
+}
+
+/* Hojas */
+.leaf {
+    background-color: green;
+}
+
+/* Tronco */
+.trunk {
+    width: 30px;
+    height: 30px;
+    background-color: brown;
+}
+
+/* Maceta */
+.pot {
+    width: 40px;
+    height: 40px;
+    background-color: sienna;
+}
+
+/* Luces */
+.light {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.light.off {
+    background-color: gray;
+    box-shadow: none;
+}
+
+.light.on {
+    background-color: yellow;
+    box-shadow: 0 0 10px 3px yellow;
+}
