@@ -1,59 +1,67 @@
-/* General container */
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 50px;
-    font-family: sans-serif;
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
 }
 
-/* Fila del árbol */
-.row {
-    display: flex;
-    justify-content: center;
+
+.mainDiv {
+  display: flex;
+  flex-direction: column;    
+  align-items: stretch;      
+  justify-content: flex-start; 
+  width: 100%;
+  height: 100%;          
 }
 
-/* Pixel base */
-.pixel {
-    width: 50px;
-    height: 50px;
-    margin: 2px;
-    box-sizing: border-box;
+.divPixeles {
+  display: flex;
+  flex-direction: row;    
+  justify-content: center; 
+  width: 100%;
+  height: 100%;    
 }
 
-/* Hojas */
-.leaf {
-    background-color: green;
+.botones {
+  color: white;
+  margin: 50px 50px;
+  background-color: black;
 }
 
-/* Tronco */
-.trunk {
-    width: 30px;
-    height: 30px;
-    background-color: brown;
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
-/* Maceta */
-.pot {
-    width: 40px;
-    height: 40px;
-    background-color: sienna;
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-/* Luces */
-.light {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    transition: all 0.3s ease;
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
 }
 
-.light.off {
-    background-color: gray;
-    box-shadow: none;
+.card {
+  padding: 2em;
 }
 
-.light.on {
-    background-color: yellow;
-    box-shadow: 0 0 10px 3px yellow;
+.read-the-docs {
+  color: #888;
 }

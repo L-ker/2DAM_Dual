@@ -1,46 +1,92 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './App.css';
-import LeafPixel from './components/LeafPixel';
-import TrunkPixel from './components/TrunkPixel';
-import PotPixel from './components/PotPixel';
-import LightPixel from './components/LightPixel';
-import LightButtons from './components/LightButtons';
+import { 
+  pixelVerde as PixelVerde,
+  pixelMarron as PixelMarron,
+  pixelMarronOscuro as PixelMarronOscuro,
+  pixelLuz as PixelLuz,
+  BotonEncender,
+  BotonApagar,
+  pixelVacio as PixelVacio
+} from "./componentes";
+import { LucesContext } from './componentes/LucesContext';
 
-const App = () => {
-    const [lightsOn, setLightsOn] = useState(false);
+function App() {
+  const [lucesEncendidas, setLucesEncendidas] = useState(false);
 
-    const turnOnLights = () => setLightsOn(true);
-    const turnOffLights = () => setLightsOn(false);
+  const encenderLuces = () => setLucesEncendidas(true);
+  const apagarLuces = () => setLucesEncendidas(false);
 
-    return (
-        <div className="container">
-            <div className="tree">
-                {/* Piso 1 */}
-                <div className="row">
-                    <LeafPixel />
-                    <LightPixel isOn={lightsOn} />
-                    <LeafPixel />
-                </div>
-                {/* Piso 2 */}
-                <div className="row">
-                    <LeafPixel />
-                    <LeafPixel />
-                    <LeafPixel />
-                </div>
-                {/* Tronco */}
-                <div className="row">
-                    <TrunkPixel />
-                </div>
-                {/* Maceta */}
-                <div className="row">
-                    <PotPixel />
-                </div>
-            </div>
-
-            {/* Botones */}
-            <LightButtons turnOn={turnOnLights} turnOff={turnOffLights} />
+  return (
+    <LucesContext.Provider value={{ lucesEncendidas, encenderLuces, apagarLuces }}>
+      <div className='mainDiv'>
+        <div className='divPixeles'>
+          <PixelVerde>
+            <PixelLuz className="luz"/>
+          </PixelVerde>
         </div>
-    );
-};
+        <div className='divPixeles'>
+          <PixelVerde>
+            <PixelLuz className="luz"/>
+          </PixelVerde>
+          <PixelVerde />
+          <PixelVerde>
+            <PixelLuz className="luz"/>
+          </PixelVerde>
+        </div>
+        <div className='divPixeles'>
+          <PixelVerde />
+          <PixelVerde>
+            <PixelLuz className="luz"/>
+          </PixelVerde>
+          <PixelVerde />
+          <PixelVerde>
+            <PixelLuz className="luz"/>
+          </PixelVerde>
+          <PixelVerde />
+        </div>
+        <div className='divPixeles'>
+            <PixelVerde>
+                <PixelLuz className="luz"/>
+            </PixelVerde>
+            <PixelVerde/>
+            <PixelVerde/>
+            <PixelVerde>
+                <PixelLuz className="luz"/>
+            </PixelVerde>
+            <PixelVerde/>   
+            <PixelVerde/>
+            <PixelVerde>
+                <PixelLuz className="luz"/>
+            </PixelVerde>
+        </div>
+        <div className='divPixeles'>
+            <PixelMarron/>
+        </div>
+        <div className='divPixeles'>
+            <PixelMarron/>
+        </div>
+        <div className='divPixeles'>
+            <PixelMarronOscuro/>
+            <PixelVacio/>
+            <PixelMarron/>
+            <PixelVacio/>
+            <PixelMarronOscuro/>
+        </div>
+        <div className='divPixeles'>
+            <PixelMarronOscuro/>
+            <PixelMarronOscuro/>
+            <PixelMarronOscuro/>
+            <PixelMarronOscuro/>
+            <PixelMarronOscuro/>
+        </div>
+        <div className='divPixeles'>
+            <BotonEncender/>
+            <BotonApagar/>
+        </div>
+      </div>
+    </LucesContext.Provider>
+  );
+}
 
 export default App;
