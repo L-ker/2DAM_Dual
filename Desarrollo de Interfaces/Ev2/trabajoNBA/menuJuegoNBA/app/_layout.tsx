@@ -22,8 +22,23 @@ export default function RootLayout() {
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
+        {/* Pantalla inicial */}
+        <Stack.Screen 
+          name="teamSelect" 
+          options={{ headerShown: false }} 
+        />
+
+        {/* Pantalla del partido */}
+        <Stack.Screen 
+          name="match" 
+          options={{ headerShown: false }} 
+        />
+
+        {/* Pantalla de resultado */}
+        <Stack.Screen 
+          name="result" 
+          options={{ headerShown: false }} 
+        />
       </Stack>
       <StatusBar style="auto" />
     </ThemeProvider>
