@@ -29,7 +29,7 @@ export default function RootLayout() {
         />
 
         {/* Pantalla del partido */}
-        <Stack.Screen 
+        <Stack.Screen  
           name="match" 
           options={{ headerShown: false }} 
         />
