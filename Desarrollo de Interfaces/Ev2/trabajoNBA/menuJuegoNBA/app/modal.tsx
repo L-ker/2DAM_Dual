@@ -4,6 +4,12 @@ import { StyleSheet } from 'react-native';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 
+/**
+ * Ejemplo de pantalla que aparece encima de otras
+ * themedView y text cambian segun tema sitio
+ * incluye un link para volver a la raiz
+ * */ 
+
 export default function ModalScreen() {
   return (
     <ThemedView style={styles.container}>

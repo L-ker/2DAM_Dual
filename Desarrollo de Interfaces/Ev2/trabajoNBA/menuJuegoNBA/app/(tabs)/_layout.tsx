@@ -9,6 +9,12 @@ import { useColorScheme } from '@/hooks/use-color-scheme';
 export default function TabLayout() {
   const colorScheme = useColorScheme();
 
+  /**
+   * layout inferior, la barra que permite moverse entre pestañas
+   * tabs gestiona la navegación entre pestañas
+   * cada tabs.screen es una pestaña
+   * */ 
+
   return (
     <Tabs
       screenOptions={{

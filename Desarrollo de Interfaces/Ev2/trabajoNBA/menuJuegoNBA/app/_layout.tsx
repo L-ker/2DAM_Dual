@@ -8,7 +8,14 @@ import { useColorScheme } from '@/hooks/use-color-scheme';
 export const unstable_settings = {
   anchor: '(tabs)',
 };
-
+/**
+ * Raiz del proyecto
+ * ThemeProvider para controlar tema oscuro o claro 
+ * stack navigator para manejar la estructura de pilas
+ * tabs= se refiere a las pestañas que estan en (tabs)/_layout.tsx
+ * modal= popup que se abre encima de todo
+ * statusbar = para notificaciones
+ * */ 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
 
