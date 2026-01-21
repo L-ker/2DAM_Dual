@@ -1,1 +1,8 @@
 Cambiar lo de legal a que hablaria con ellos y llegaria a un acuerdo de uso de recursos sin beneficio
+RF20. El sistema permitirá analizar el meta (por ejemplo, uso de Pokémon más comunes o amenazas típicas).
+RF18. El sistema ofrecerá un analizador de debilidades y resistencias del equipo.
+RF19. El sistema mostrará estadísticas agregadas del equipo (ofensivas/defensivas).
+RF26. (Opcional) El sistema permitirá seleccionar idioma adicional (por ejemplo inglés).
+guia o conceptos basicos
+simulador de turnos simple
+RNF-002 [Fiabilidad]: En caso de cierre inesperado de la aplicación, los equipos guardados no deberán perderse.
