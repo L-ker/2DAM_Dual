@@ -10,7 +10,7 @@ export default function TeamCard({ team, onChange }: TeamCardProps) {
   return (
     <View style={styles.card}>
       {/* Logo */}
-      <Image source={team.logo} style={styles.logo} resizeMode="contain" />
+      <Image source={team.logo} style={styles.logo} />
 
       {/* Nombre del equipo */}
       <Text style={styles.teamName}>{team.name}</Text>
