@@ -67,10 +67,10 @@ const styles = StyleSheet.create({
   },
   column: {
     width: '45%',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-start',
   },
   playButton: {
-    marginBottom: 30,
+    marginBottom: '20%',
     alignSelf: 'center',
     borderWidth: 3,
     borderColor: '#ffffff',

@@ -10,10 +10,15 @@ export default function TeamCard({ team, onChange }: TeamCardProps) {
   return (
     <View style={styles.card}>
       {/* Logo */}
-      <Image source={team.logo} style={styles.logo} resizeMode="contain" />
+      <Image source={team.logo} style={styles.logo} />
 
       {/* Nombre del equipo */}
       <Text style={styles.teamName}>{team.name}</Text>
+
+      {/* Botón Change */}
+      <Pressable style={styles.button} onPress={onChange}>
+        <Text style={styles.buttonText}>CHANGE</Text>
+      </Pressable>
 
       {/* Jugadores */}
       <View style={styles.players}>
@@ -23,34 +28,34 @@ export default function TeamCard({ team, onChange }: TeamCardProps) {
           </Text>
         ))}
       </View>
-
-      {/* Botón Change */}
-      <Pressable style={styles.button} onPress={onChange}>
-        <Text style={styles.buttonText}>CHANGE</Text>
-      </Pressable>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   card: {
-    flex: 1,
+    marginVertical: '40%',
     borderWidth: 2,
     borderColor: '#ffffff',
     padding: 16,
-    justifyContent: 'space-between',
+    justifyContent: 'flex-start',
+    height: '85%',
   },
   logo: {
-    width: '100%',
-    height: 80,
-    marginBottom: 8,
+    width: 100,
+    height: 100,
+    marginTop: '45%',
+    marginBottom: 40,
+    alignSelf: 'center',
+    resizeMode: 'stretch',
   },
   teamName: {
     color: '#ffffff',
-    fontSize: 14,
+    fontSize: 20,
     fontWeight: 'bold',
     textAlign: 'center',
-    marginBottom: 8,
+    height: '20%',
+    marginBottom: 40,
     textTransform: 'uppercase',
   },
   players: {
@@ -65,6 +70,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: '#ffffff',
     paddingVertical: 6,
+    marginBottom: '30%',
   },
   buttonText: {
     color: '#ffffff',
