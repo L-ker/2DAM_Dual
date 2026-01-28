@@ -1,8 +1,4 @@
-Cambiar lo de legal a que hablaria con ellos y llegaria a un acuerdo de uso de recursos sin beneficio
-RF20. El sistema permitirá analizar el meta (por ejemplo, uso de Pokémon más comunes o amenazas típicas).
-RF18. El sistema ofrecerá un analizador de debilidades y resistencias del equipo.
-RF19. El sistema mostrará estadísticas agregadas del equipo (ofensivas/defensivas).
-RF26. (Opcional) El sistema permitirá seleccionar idioma adicional (por ejemplo inglés).
-guia o conceptos basicos
-simulador de turnos simple
-RNF-002 [Fiabilidad]: En caso de cierre inesperado de la aplicación, los equipos guardados no deberán perderse.
+esto para hacer como contrato simulacion: https://docs.google.com/document/d/1kPp3FggVM4axING7azxU89JDu9PEabJ_cItv-0bQAps/edit?pli=1&tab=t.0#heading=h.jrbkzhb0zfcf
+    para lo de empresa tengo que hacercanvas
+    presupuesto (gantt) inversiones, gastos, coste salarial
+    presentacion proyecto tipo elevator pitch max 2mins
