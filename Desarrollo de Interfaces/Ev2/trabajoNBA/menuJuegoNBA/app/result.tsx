@@ -26,18 +26,21 @@ export default function ResultScreen() {
   const left = teams.find(t => t.id === leftTeam);
   const right = teams.find(t => t.id === rightTeam);
 
+  //asegurar que no es posible entrar a esta direccion desde teamCard lo cual daria problemas
   if (!left || !right) return null;
 
   const lScore = Number(leftScore);
   const rScore = Number(rightScore);
 
-  // 👇 TIPADO EXPLÍCITO (clave)
+  //parseamos de vuelta a json para usarlo
   const stats: PlayerStats = JSON.parse(playerStats);
 
+  //sorteo simple para ordenar los jugadores y agarramos los que mas puntos tienen
   const topPlayers = Object.entries(stats)
     .sort((a, b) => b[1] - a[1])
     .slice(0, 5);
 
+  // comprobar ganador
   const isDraw = lScore === rScore;
   const winner = lScore > rScore ? left : right;
 

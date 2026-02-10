@@ -4,12 +4,14 @@ import { useState } from 'react';
 
 import teams from '@/constants/Teams';
 
+// Objeto-mapa para guardar clave-valor de jugador-puntos
 type PlayerStats = {
   [playerName: string]: number;
 };
 
 export default function MatchScreen() {
   const router = useRouter();
+  // datos de la pantalla anterior
   const { leftTeam, rightTeam } = useLocalSearchParams<{
     leftTeam: string;
     rightTeam: string;
@@ -18,6 +20,7 @@ export default function MatchScreen() {
   const left = teams.find(t => t.id === leftTeam);
   const right = teams.find(t => t.id === rightTeam);
 
+  //estadisticas del partido
   const [leftScore, setLeftScore] = useState(0);
   const [rightScore, setRightScore] = useState(0);
 
@@ -25,23 +28,28 @@ export default function MatchScreen() {
 
   if (!left || !right) return null;
 
+  // funcion para añadir puntos a jugadores y actualizar marcador
   const addPoints = (
+    // parametros equipo-jugador anotando puntos-puntos anotados
     side: 'left' | 'right',
     player: string,
     points: number
   ) => {
+    //que equipo ha anotado
     if (side === 'left') {
       setLeftScore(prev => prev + points);
     } else {
       setRightScore(prev => prev + points);
     }
 
+    // actualizar sobre las stats previas o nuevas si no habia puntos anotados del jugador
     setPlayerStats(prev => ({
       ...prev,
       [player]: (prev[player] || 0) + points,
     }));
   };
 
+  //mandar con datos a la pantalla de result
   const finishGame = () => {
     router.push({
       pathname: '/result',
