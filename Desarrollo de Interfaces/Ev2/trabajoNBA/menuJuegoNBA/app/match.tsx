@@ -30,14 +30,12 @@ export default function MatchScreen() {
     player: string,
     points: number
   ) => {
-    // sumar al equipo correcto
     if (side === 'left') {
       setLeftScore(prev => prev + points);
     } else {
       setRightScore(prev => prev + points);
     }
 
-    // sumar al jugador
     setPlayerStats(prev => ({
       ...prev,
       [player]: (prev[player] || 0) + points,
