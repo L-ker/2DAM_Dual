@@ -1,0 +1,43 @@
+- Usuarios -
+Que tengan una cuenta, DNI como mucho
+
+- Información para los torneos -
+# CREACION
+- Gestor
+1. Elige especies de una lista
+2. Elige horario (8-5 por ejemplo)
+3. Elige fecha/s (1 horario por fecha)
+4. Elegir escenario (Que esten en el rio en general, cerca del lugar, con Google maps o algo)
+5. Equipos: una vez todos se unan deberías de poder asignar a los participantes
+6. Elegir si video o foto
+7. Poner cupos por especie o sea máximo que puedes subir de cada una
+- Participantes
+1. Seleccionar especie de las que ha puesto el gestor
+2.1. Probar a ver si puedo hacer que cualquier zona del móvil sea para confirmar la foto
+2.2. Probar a hacer video
+3. Poder eliminar o elegir capturas si quieren subir otra mejor
+
+- Cuando se suben fotos
+- Gestor
+1. Poder aprobar o denegar poniendo comentarios
+1.1 En caso de denegar puedo poner comentario
+1.2 Al aceptar puede poner distinta puntuación y especies
+
+X. Puntuación en tiempo real
+
+Clasificación total
+-----
+Individual
+Puestos - nombre - cm totales
+Grupal (La clasificación es por puestos individuales se suman y cuanto menos mas arriba)
+Puesto - nombre - participantes con su puesto individual
+
+# LIGAS
+CLASIFICACION
+Individual
+Numero máximo = numero participantes inscritos en la liga
+Vas bajando de arriba del todo
+Cuantos mas puntos mas arriba quedas en la ligar
+ y grupal igual
+
+ 
